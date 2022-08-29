@@ -17,14 +17,21 @@ public class CarService {
         cars.add(new Car("Model3", 333, "v3"));
         cars.add(new Car("Model4", 444, "v4"));
         cars.add(new Car("Model5", 555, "v5"));
+        cars.add(new Car("Model6", 666, "v6"));
+        cars.add(new Car("Model7", 777, "v7"));
     }
 
     public List<Car> getAllCars() {
         return cars;
     }
 
-    public Car[] getCars(int count){
-        return cars.subList(0,count).toArray(new Car[0]);
+    public List<Car> getCars (int count) {
+        if (count >= 5) {
+            count = 5;
+            return getAllCars();
+        } else {
+            return (count < cars.size() )? cars.subList(0,count) : cars;
+        }
     }
 
 }
